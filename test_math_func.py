@@ -1,14 +1,14 @@
 import math_func
 import pytest
 
-def test_add():
-    assert math_func.add(7,3) == 10
+@pytest.mark.parametrize('n1, n2, result',
+                         [
+                             (7,3,10),
+                             ("Hello"," World",'Hello World'),
+                             (10.5, 2.5, 13)
+                         ]
+                         )
+def test_add(n1, n2, result):
+    assert math_func.add(n1 ,n2) == result
 
 
-def test_add_strings():
-    result=math_func.add('Hello',' World')
-    assert result == 'Hello World'
-
-
-def test_add_float():
-    assert math_func.add(7.5,3.5) == 11
