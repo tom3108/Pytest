@@ -1,11 +1,18 @@
-import math_func
+from math_func import StudentDB
+import pytest
 
-def test_add():
-    assert math_func.add(7,3) == 10
-    assert math_func.add(7) == 9
-    assert math_func.add(5) == 7
+def test_tom_data():
+    db = StudentDB()
+    db.connect('data.json')
+    tom_data = db.get_data("Tom")
+    assert tom_data ['id'] == 1
+    assert tom_data['name'] == "Tom"
+    assert tom_data['result'] == "pass"
 
-def test_product():
-    assert math_func.product(5, 5) == 25
-    assert math_func.product(5) == 10
-    assert math_func.product(7) == 14
+def test_mac_data():
+    db = StudentDB()
+    db.connect('data.json')
+    mac_data = db.get_data("Mac")
+    assert mac_data ['id'] == 2
+    assert mac_data['name'] == "Mac"
+    assert mac_data['result'] == "fail"
