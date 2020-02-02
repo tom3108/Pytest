@@ -6,7 +6,9 @@ def db():
     print('-------setup------')
     db = StudentDB()
     db.connect('data.json')
-    return db
+    yield db
+    print('-------teardown-----')
+    db.close
 
 def test_tom_data(db):
     tom_data = db.get_data("Tom")
